@@ -1,0 +1,18 @@
+{% extends 'layout_teacher.html' %}
+{% block content %}
+<div class="container">
+    <h3>Rececnt Lectures</h3>
+    {% for lecture in lectures %}
+        <article class="media content-section">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="#">{{ lecture.title }}</a>
+              <small class="text-muted">{{ lecture.date }}</small>
+            </div>
+            <!-- <h2><a class="article-title" href="#">{{ lecture.title  }}</a></h2>
+            <p class="article-content">{{ lecture.date }}</p> -->
+          </div>
+        </article>
+    {% endfor %}   
+</div>
+{% endblock %}

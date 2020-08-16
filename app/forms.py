@@ -10,52 +10,30 @@ class teacherRegistrationForm(FlaskForm):
                            validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
-
-    age = IntegerField('Age', validators=[DataRequired(), Length(min=0, max=100)])
-    gender = RadioField('Gender', choices=[('M', 'Male'), ('F', 'Female')])
-    height = IntegerField('Height', validators=[DataRequired(), Length(min=15, max=400)])
-    weight = IntegerField('Weight', validators=[DataRequired(), Length(min=1, max=600)])
-    bloodgroup = StringField('Blood Group', validators=[DataRequired()])
-    location = StringField('Location', validators=[DataRequired()])
-
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(), EqualTo('password')])
-       
-    #submit = SubmitField('Sign Up')
-
-    # def validate_username(self, name):
-    #     user = teacherRegistrationForm.query.filter_by(name=name.data).first()
-    #     if user:
-    #         raise ValidationError('That username is taken. Please choose a different one.')
-
-    # def validate_email(self, email):
-    #     user = teacher.query.filter_by(email=self.email.data).first()
-    #     if user:
-    #         raise ValidationError('That email is taken. Please choose a different one.')
-
+    
 class adminRegistrationForm(FlaskForm):
     name = StringField('Name',
                            validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email',
                         validators=[DataRequired(), Email()])
-
-    degree = StringField('Degree', validators=[DataRequired()])
-    specialisation = StringField('Specialisation', validators=[DataRequired()])
-    location = StringField('Location', validators=[DataRequired()])
-
     password = PasswordField('Password', validators=[DataRequired()])
     confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(), EqualTo('password')])
   
-# class AddteacherHistory(FlaskForm):
-#     symptoms = StringField('Symptoms',
-#                            validators=[DataRequired(), Length(min=2, max=200)]) 
-#     diagnosis = StringField('Diagnosis',
-#                            validators=[DataRequired(), Length(min=2, max=200)])
-#     treatment = StringField('Treatment',
-#                            validators=[DataRequired(), Length(min=2, max=200)])
-#     otp_add = StringField('OTP', validators=[DataRequired])
+class send_lectures_form(FlaskForm):
+        link = StringField('lecture_link',
+                           validators=[DataRequired(), Length(min=2, max=1000)]) 
+        transcript = StringField('transcript',
+                           validators=[DataRequired(), Length(min=2, max=100000)])
+
+class send_assignments_form(FlaskForm):
+        link = StringField('question',
+                           validators=[DataRequired(), Length(min=2, max=1000)]) 
+        transcript = StringField('answer',
+                           validators=[DataRequired(), Length(min=2, max=100000)])
 
 class LoginForm(FlaskForm):
     email = StringField('Email',validators=[DataRequired(), Email()])

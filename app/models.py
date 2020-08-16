@@ -31,7 +31,7 @@ class admin(UserMixin ,db.Model):
     name = db.Column(db.String(64), index=True, unique=True, nullable=False)
     email = db.Column(db.String(128), index=True, unique=True, nullable=False)
     password_hash = db.Column(db.String(128), nullable=False)
-    role = db.Column(db.String(1), default='d')
+    role = db.Column(db.String(1), default='a')
     
     def __repr__(self):
         return '<admin {}>'.format(self.name)
@@ -45,18 +45,21 @@ class admin(UserMixin ,db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-# class teacherHistory(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     time_stamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
-#     teacher_id = db.Column(db.Integer, nullable=False)
-#     # admin_id = db.Column(db.Integer, db.ForeignKey('admin.id'))
-#     symptoms = db.Column(db.String(200))
-#     diagnosis = db.Column(db.String(200))
-#     treatment = db.Column(db.String(200))
-    
-#     def __repr__(self):
-#         return '<teacherHistory {} {} {} {}>'.format(self.id, self.symptoms, self.diagnosis, self.treatment)
+class studentHistory(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), index=True, unique=True, nullable=False)
+    phoneno = db.Column(db.Integer)
+    message_option = db.Column(db.String(1), default='s')
+    marks = db.Column(db.Integer)
 
+    def __repr__(self):
+        return '<teacherHistory {} {} {} {}>'.format(self.id, self.name, self.phoneno, self.marks)
+
+class assignments(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    question = db.Column(db.String(10000))
+    answer = db.Column(db.String(10))
+        
 @login.user_loader
 def load_teacher(id):
     print("userloader called", data.check_type())
