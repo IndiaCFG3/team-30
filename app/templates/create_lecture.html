@@ -1,6 +1,6 @@
 {% extends 'layout_teacher.html' %}
 {% block content %}
-    <form method="POST" action="">
+    <form method="POST" action="/lecture_submit">
         <div class="content-section">
         <fieldset style="margin-top: 100px;" class="form-group">
             <div class="form-group">
@@ -22,5 +22,4 @@
             {{ form.submit(class="btn btn-outline-info") }}
         </div>
     </form>
-
 {% endblock %}

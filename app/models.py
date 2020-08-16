@@ -44,41 +44,41 @@ class admin(UserMixin ,db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-# class studentHistory(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(64), index=True, unique=True, nullable=False)
-#     phoneno = db.Column(db.Integer)
-#     message_option = db.Column(db.String(1), default='s')
-#     marks = db.relationship('scores')
+class studentHistory(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), index=True, unique=True, nullable=False)
+    phoneno = db.Column(db.Integer)
+    message_option = db.Column(db.String(1), default='s')
+    marks = db.relationship('scores')
 
-#     def __repr__(self):
-#         return '<studentHistory {} {} {} {}>'.format(self.id, self.name, self.phoneno)
+    def __repr__(self):
+        return '<studentHistory {} {} {}>'.format(self.id, self.name, self.phoneno)
 
-# class lectureHistory(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     link = db.Column(db.String(100), index=True, unique=True, nullable=False)
-#     transcript = db.Column(db.String(100000), index=True)
-#     teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'))
+class lectureHistory(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    link = db.Column(db.String(100), index=True, unique=True, nullable=False)
+    transcript = db.Column(db.String(100000), index=True)
+    teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'))
 
-#     def __repr__(self):
-#         return '<lectureHistory {} {} {} {}>'.format(self.id)
+    def __repr__(self):
+        return '<lectureHistory {}>'.format(self.id)
 
-# class assignments(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     question = db.Column(db.String(10000))
-#     option1 = db.Column(db.String(100))
-#     option2 = db.Column(db.String(100))
-#     option3 = db.Column(db.String(100))
-#     option4 = db.Column(db.String(100))
-#     answer = db.Column(db.Integer)
+class assignments(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    question = db.Column(db.String(10000))
+    option1 = db.Column(db.String(100))
+    option2 = db.Column(db.String(100))
+    option3 = db.Column(db.String(100))
+    option4 = db.Column(db.String(100))
+    answer = db.Column(db.Integer)
 
-#     scores = db.Column(db.Integer, db.ForeignKey('scores.id'))
+    scores = db.Column(db.Integer, db.ForeignKey('scores.id'))
 
-# class scores(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     marks = db.Column(db.Integer)
-#     student_id = db.Column(db.Integer, db.ForeignKey('studentHistory.id'))
-#     assignments_id = db.relationship('assignments')
+class scores(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    marks = db.Column(db.Integer)
+    student_id = db.Column(db.Integer, db.ForeignKey('studentHistory.id'))
+    assignments_id = db.relationship('assignments')
 
 @login.user_loader
 def load_teacher(id):

@@ -3,9 +3,10 @@ from app import app, db, data
 from flask_login import login_required, current_user, login_user, logout_user
 from datetime import datetime
 from app.forms import LoginForm, teacherRegistrationForm, adminRegistrationForm, send_lectures_form, send_assignments_form ,CreatenotesForm
-from app.models import teacher, admin
+from app.models import teacher, admin, lectureHistory, studentHistory
 from functools import wraps
 from sqlalchemy.exc import IntegrityError
+
 
 @app.route('/', methods=['GET'])
 @app.route('/home')
@@ -19,7 +20,40 @@ def home():
 #     form_teacher = LoginForm()
 #     form_admin = LoginForm()
 #     return render_template('login.html', form_teacher=form_teacher, form_admin=form_admin, title='Login')
+@app.route('/home_teacher')
+# @login_required
+def home_teacher():
+    return render_template('home_teacher.html', title='Home Classroom')
 
+# @app.route('/create_lecture', methods=['GET', 'POST'])
+# def create_lecture():
+#     return render_template('create_lecture.html',title='create lecture',form=CreatenotesForm())
+
+@app.route('/lecture_submit', methods=['POST', 'GET'])
+def lecture_submit():
+    if request.method == 'GET':
+        return render_template('create_lecture.html',title='create lecture',form=CreatenotesForm())
+
+    form = CreatenotesForm()
+    if 1 or form.validate_on_submit():
+        lecture = lectureHistory( link= form.url.data, transcript = form.notes.data, teacher_id = 1 )
+        db.session.add(lecture)
+        db.session.commit()
+
+    return redirect(url_for('home_teacher'))    
+
+@app.route('/create_quiz', methods=['POST', 'GET'])
+def quiz_submit():
+    return render_template('home_teacher_quiz.html', title="create Quiz")
+
+@app.route('/home_teacher_stream')
+def home_teacher_stream():
+    lec_data = [{"title":"lec1", "date":'25/02/2020'},
+        {"title":"lec2", "date":'23/02/2020'},
+        {"title":"lec3", "date":'25/02/2020'},
+        {"title":"lec4", "date":'28/02/2020'}]
+    quiz_data = [{"title":"quiz1", "status":"completed"}]
+    return render_template('home_teacher_stream.html', title='Stream', lectures=lec_data, quizes=quiz_data)
 @app.route('/login_admin', methods=['POST', 'GET'])
 def login_admin():
     if current_user.is_authenticated:
@@ -44,9 +78,9 @@ def login_admin():
         else:
             print('Login unsuccessful. Please check mail and password')
             flash('Login unsuccessful. Please check mail and password')
-            return redirect(url_for('login'))
+            return redirect(url_for('login_admin'))
 
-    return redirect(url_for('login'))
+    return redirect(url_for('login_admin'))
 
 @app.route('/login_teacher', methods=['POST', 'GET'])
 def login_teacher():
@@ -74,15 +108,15 @@ def login_teacher():
         else:
             print('Login unsuccessful. Please check mail and password')
             flash('Login unsuccessful. Please check mail and password')
-            return redirect(url_for('login'))
+            return redirect(url_for('login_teacher'))
 
-    return redirect(url_for('login'))
+    return redirect(url_for('login_teacher'))
 
-# @app.route('/logout')
-# def logout():
-#     data.set_type('nil')
-#     logout_user()
-#     return redirect(url_for('home'))
+@app.route('/logout')
+def logout():
+    data.set_type('nil')
+    logout_user()
+    return redirect(url_for('home'))
 
 @app.route('/register_teacher', methods = ['POST', 'GET'])
 def register_teacher():
@@ -146,29 +180,5 @@ def register_teacher():
 #     else:
 #         print("error, try again")
 #         flash("Error, Try again")
-
-# @app.route('/home_teacher')
-# @login_required
-# def home_teacher():
-#     return render_template('home_teacher.html', title='Home Classroom')
-
-# @app.route('/create_lecture', methods=['GET', 'POST'])
-# def create_lecture():
-#     return render_template('create_lecture.html',title='create lecture',form=CreatenotesForm())
-
-# @app.route('/lecture_submit', methods=['POST'])
-# def lecture_submit():
-#     form=CreatenotesForm()
-#     if form.validate_on_submit:
-#         return redirect(url_for('home'))
-    
-# @app.route('/home_teacher_stream')
-# def home_teacher_stream():
-#     lec_data = [{"title":"lec1", "date":'25/02/2020'},
-#         {"title":"lec2", "date":'23/02/2020'},
-#         {"title":"lec3", "date":'25/02/2020'},
-#         {"title":"lec4", "date":'28/02/2020'}]
-#     quiz_data = [{"title":"quiz1", "status":"completed"}]
-#     return render_template('home_teacher_stream.html', title='Stream', lectures=lec_data, quizes=quiz_data)
 
 
