@@ -10,8 +10,12 @@ from sqlalchemy.exc import IntegrityError
 @app.route('/', methods=['GET'])
 @app.route('/home')
 def home():
-    return render_template('home.html', title='Home')
+    # return render_template('home.html', title='Home')
+    return render_template('home_teacher.html', title='Home Classroom')
 
+@app.route('/home_teacher')
+def home_teacher():
+    return render_template('home_teacher.html', title='Home Classroom')
 
 @app.route('/login', methods=['GET'])
 def login():
