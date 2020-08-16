@@ -43,21 +43,21 @@ class admin(UserMixin ,db.Model):
     def check_password(self, password):
         return check_password_hash(self.password_hash, password)
 
-# class studentHistory(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     name = db.Column(db.String(64), index=True, unique=True, nullable=False)
-#     phoneno = db.Column(db.Integer)
-#     message_option = db.Column(db.String(1), default='s')
-#     marks = db.Column(db.Integer)
+class studentHistory(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(64), index=True, unique=True, nullable=False)
+    phoneno = db.Column(db.Integer)
+    message_option = db.Column(db.String(1), default='s')
+    marks = db.Column(db.Integer)
 
-#     def __repr__(self):
-#         return '<teacherHistory {} {} {} {}>'.format(self.id, self.name, self.phoneno, self.marks)
+    def __repr__(self):
+        return '<teacherHistory {} {} {} {}>'.format(self.id, self.name, self.phoneno, self.marks)
 
-# class lectures(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     link = db.Column(db.String(1000))
-#     transcript = db.Column(db.String())
-
+class assignments(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    question = db.Column(db.String(10000))
+    answer = db.Column(db.String(10))
+        
 @login.user_loader
 def load_teacher(id):
     print("userloader called", data.check_type())

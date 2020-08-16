@@ -23,14 +23,17 @@ class adminRegistrationForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(), EqualTo('password')])
   
-# class AddteacherHistory(FlaskForm):
-#     symptoms = StringField('Symptoms',
-#                            validators=[DataRequired(), Length(min=2, max=200)]) 
-#     diagnosis = StringField('Diagnosis',
-#                            validators=[DataRequired(), Length(min=2, max=200)])
-#     treatment = StringField('Treatment',
-#                            validators=[DataRequired(), Length(min=2, max=200)])
-#     otp_add = StringField('OTP', validators=[DataRequired])
+class send_lectures(FlaskForm):
+        link = StringField('lecture_link',
+                           validators=[DataRequired(), Length(min=2, max=1000)]) 
+        transcript = StringField('transcript',
+                           validators=[DataRequired(), Length(min=2, max=100000)])
+
+class send_assignments(FlaskForm):
+        link = StringField('question',
+                           validators=[DataRequired(), Length(min=2, max=1000)]) 
+        transcript = StringField('answer',
+                           validators=[DataRequired(), Length(min=2, max=100000)])
 
 class LoginForm(FlaskForm):
     email = StringField('Email',validators=[DataRequired(), Email()])

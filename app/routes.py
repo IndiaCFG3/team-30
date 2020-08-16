@@ -100,7 +100,7 @@ def register():
     form_teacher = teacherRegistrationForm()
     form_admin = adminRegistrationForm()
 
-    return render_template('register_teacher.html', form_teacher=form_teacher, form_admin=form_admin, title="Sign Up")
+    return render_template('register', form_teacher=form_teacher, form_admin=form_admin, title="Sign Up")
 
 @app.route('/register_teacher', methods = ['POST'])
 def register_teacher():
