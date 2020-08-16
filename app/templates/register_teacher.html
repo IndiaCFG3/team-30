@@ -2,7 +2,7 @@
 <head>
 <title>
 		Teacher Registration</title>
-		<link rel="shortcut icon" href="Logo.jpg" type="image/x-icon">
+		<link rel="shortcut icon" href="../static/logoWithoutBg.png" type="image/x-icon">
 <style>
 td{
 	color:white;
@@ -77,13 +77,21 @@ textarea:focus
   transition:width 0.5s;
 }
 </style>
+
 </head>
-<body style="background-image: {{url_for('static', filename='TregBg.jpg')}} ">
+<<<<<<< HEAD
+<body style="background-image: url('../static/TregBg.jpg') ">
+<img src="../static/logoWithoutBg.png" style="width:300px; margin-left:550px; height:300px;"/>
+=======
+<body>
 <img src="{{url_for('static', filename='logoWithoutBg.png')}}" style="width:300px; margin-left:550px; height:300px;"/>
+>>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
 <form name="main" onsubmit="return validate_info();"   autocomplete="off" method="post" action="/register_teacher">
 <div style="  background-image: {{url_for('static', filename='TregBg.jpg')}} color:Black; border-radius:15px 50px;  width:600px;";>
+
 <!--<fieldset style="border-radius:15px 50px;">
 <legend style="text-align:center; font-size:25px;">NEW_REGISTERATION</legend>-->
+
 <p style="font-family:Impact,Charcoal,sans-serif; font-weight:bold; font-size:60px;">Teacher Registration</p>
 <table>
 <tr>
@@ -126,7 +134,7 @@ textarea:focus
 <tr>
 <td>
 <input type="submit" value="Sign Up" style="width:200px; font-weight:bolder; margin-left:150px; font-family:'Arial',sans-serif; border:none; background-color:#192537; padding:10px 10px 10px 10px; cursor:pointer; border-radius:20px; color:Tan;" />
-<p style="font-size:20px; color:black; font-weight:bolder; font-family:Georgian,serif;">if already Exist?</p><a href="login_page.html" style="padding-left:50px; font-size:20px;">Login Page</a>
+<p style="font-size:20px; color:black; font-weight:bolder; font-family:Georgian,serif;">if already Exist?</p><a href="TloginPage.html" style="padding-left:50px; font-size:20px;">Login Page</a>
 </td>
 </tr>
 </table>

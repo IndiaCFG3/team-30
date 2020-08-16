@@ -2,7 +2,11 @@
 <head>
 <title>
 		Login</title>
-		<link rel="shortcut icon" href="logoWithoutBg.png" type="image/x-icon">
+<<<<<<< HEAD
+		<link rel="shortcut icon" href="../static/logoWithoutBg.png" type="image/x-icon">
+=======
+		<link rel="shortcut icon" href=" {{url_for('static', filename='logoWithoutBg.png')}} " type="image/x-icon">
+>>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 td{
@@ -17,7 +21,7 @@ input[type=text]{
 					height:50px;
 					width:270px;
 					background-color:white;
-					color:Tan;
+					color:black;
 					border:none;
 					font-size:16px;
 					border-bottom: 2px solid grey;
@@ -27,7 +31,7 @@ input[type=password]{
 					height:50px;
 					width:270px;
 					background-color:white;
-					color:Tan;
+					color:black;
 					border:none;
 					font-size:16px;
 					border-bottom: 2px solid grey;
@@ -56,7 +60,11 @@ input[type=submit]:focus{
 }
 		
 html { 
-  background: url(loginBg.jpg) no-repeat center fixed; /*fire_smokebg.jpg*/
+<<<<<<< HEAD
+  background: url(../static/loginBg.jpg) no-repeat center fixed; /*fire_smokebg.jpg*/
+=======
+  background: url("{{url_for('static', filename='loginBg.jpg')}}") no-repeat center fixed; /*fire_smokebg.jpg*/
+>>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
   background-size: cover;
 }
 .fa {
@@ -96,11 +104,16 @@ margin-left:50px;
 </style>
 </head>
 <body>
-<img src="logoWithoutBg.png" style="margin-left:550px;"/>
+<<<<<<< HEAD
+<img src="../static/logoWithoutBg.png" style="margin-left:550px;" />
+=======
+
+<img src="{{url_for('static', filename='logoWithoutBg.png')}}" style="margin-left:550px;"/>
+>>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
 
 <!-- Put your method in the form-->
 
-<form name="f1" onsubmit="return validate();" method="post" action="#">
+<form name="f1" onsubmit="return validate();" method="post" action="/login_teacher">
 <fieldset style="position:fixed; border:none; top:50%; left:50%; margin-top:-150px; border-radius:5px; margin-left:-200px;  background-color:white; color:white; width:350px; height:450px;">
 <p style="padding-left:35%; font-weight:bolder; font-size:25px; color:black; font-family:'Verdana',sans-serif;">Login</p>
 <span style="color:red; font-size:16px; width:500px;" id="sp1"></span>
@@ -109,14 +122,14 @@ margin-left:50px;
 		<td class="pos">Username</td>
 		</tr>
 		<tr>
-		<td><input autocomplete="off" placeholder="Enter Username" type="text" name="lgtxt1" id="lg1" required></input></td>
+		<td><input autocomplete="off" placeholder="Enter Username" type="text" name="{{ form_teacher.email.name }}" id="email" required></input></td>
 		</tr>
 	<tr><td></br></td></tr>
 	<tr>
 		<td class="pos">Password</td>
 		</tr>
 		<tr>
-		<td><input type="password" placeholder="Enter Password" name="lgtxt2" required></input></td>
+		<td><input type="password" placeholder="Enter Password" name="{{ form_teacher.password.name }}" id = "password" required></input></td>
 	</tr>
 	<tr><td></br></td></tr>
 	<tr>
@@ -125,20 +138,18 @@ margin-left:50px;
 	<tr><td></br></td></tr>
 	
 	<!--other inks-->
-	
 	<tr>
-		<td ><a href="Treg.html" class="link" >Don't have an account?</a></td>
+<<<<<<< HEAD
+		<td ><a href="register_teacher.html" class="link" >Don't have an account?</a></td>
+=======
+		<td ><a href="{{url_for('register_teacher')}}" class="link" >Don't have an account?</a></td>
+>>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
 	</tr>
 	<tr><td></td></tr>
 	<tr>
-		<td ><a href="AdLogin.html" class="link" >Admin Login?</a></td>
-	</tr>
-	<tr><td></td></tr>
-	<tr>
-		<td ><a href="#" class="link" >Forgot Password?</a></td>
+		<td ><a href="{{url_for('login_admin')}}" class="link" >Admin Login?</a></td>
 	</tr>
 </table>
-<tr><td></td></tr>
 <!--Social Media links-->
 
 <a href="#" class="fa fa-facebook"></a>

@@ -2,7 +2,11 @@
 <head>
 <title>
 		Admin Login</title>
-		<link rel="shortcut icon" href="logoWithoutBg.png" type="image/x-icon">
+<<<<<<< HEAD
+		<link rel="shortcut icon" href="../static/logoWithoutBg.png" type="image/x-icon">
+=======
+		<link rel="shortcut icon" href="{{url_for('static', filename='logoWithoutBg.png')}}" type="image/x-icon">
+>>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 td{
@@ -58,7 +62,11 @@ input[type=submit]:focus{
 }
 		
 html { 
-  background: url(AdminLgBg.jpg) no-repeat center fixed; /*fire_smokebg.jpg*/
+<<<<<<< HEAD
+  background: url(../static/AdminLgBg.jpg) no-repeat center fixed; /*fire_smokebg.jpg*/
+=======
+  background: url("{{url_for('static', filename='AdminLgBg.jpg')}}") no-repeat center fixed; /*fire_smokebg.jpg*/
+>>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
   background-size: cover;
 }
 .fa {
@@ -98,7 +106,11 @@ margin-left:50px;
 </style>
 </head>
 <body>
-<img src="logoWithoutBg.png" style="margin-left:550px;"/>
+<<<<<<< HEAD
+<img src="../static/logoWithoutBg.png" style="margin-left:550px;"/>
+=======
+<img src="{{url_for('static', filename='logoWithoutBg.png')}}" style="margin-left:550px;"/>
+>>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
 
 <!-- Put your method in the form-->
 
@@ -111,14 +123,14 @@ margin-left:50px;
 		<td class="pos">Username</td>
 		</tr>
 		<tr>
-		<td><input autocomplete="off" placeholder="Enter Username" type="text" name="lgtxt1" id="lg1" required></input></td>
+		<td><input autocomplete="off" placeholder="Enter Username" type="text" name="{{ form_admin.email.name }}" id="email" required></input></td>
 		</tr>
 	<tr><td></br></td></tr>
 	<tr>
 		<td class="pos">Password</td>
 		</tr>
 		<tr>
-		<td><input type="password" placeholder="Enter Password" name="lgtxt2" required></input></td>
+		<td><input type="password" placeholder="Enter Password" name="{{ form_admin.password.name }}" id="password" required></input></td>
 	</tr>
 	<tr><td></br></td></tr>
 	<tr>
@@ -129,7 +141,7 @@ margin-left:50px;
 	<!--other inks-->
 	<tr><td></td></tr>
 	<tr>
-		<td ><a href="TloginPage.html" class="link" >Teacher Login?</a></td>
+		<td ><a href="{{url_for('login_teacher')}}" class="link" >Teacher Login?</a></td>
 	</tr>
 	<tr><td></td></tr>
 	<tr>

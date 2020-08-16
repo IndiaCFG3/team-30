@@ -58,7 +58,7 @@ class lectureHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     link = db.Column(db.String(100), index=True, unique=True, nullable=False)
     transcript = db.Column(db.String(100000), index=True)
-    teacher_id = db.Column(db.Integer, ForeignKey('teacher.id'))
+    teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'))
 
     def __repr__(self):
         return '<lectureHistory {} {} {} {}>'.format(self.id)
@@ -72,12 +72,12 @@ class assignments(db.Model):
     option4 = db.Column(db.String(100))
     answer = db.Column(db.Integer)
 
-    scores = db.Column(db.Integer, ForeignKey('scores.id'))
+    scores = db.Column(db.Integer, db.ForeignKey('scores.id'))
 
 class scores(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     marks = db.Column(db.Integer)
-    student_id = db.Column(db.Integer, ForeignKey('studentHistory.id'))
+    student_id = db.Column(db.Integer, db.ForeignKey('studentHistory.id'))
     assignments_id = db.relationship('assignments')
 
 @login.user_loader
