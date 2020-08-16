@@ -1,141 +1,27 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- font awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
-  <!--Import Google Icon Font-->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <!-- Compiled and minified CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
-  <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
-  <!-- <link rel="stylesheet" href="language.css"> -->
-  <title>Create Quiz-{{title}}</title>
-  <style>
-input[type=text] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  box-sizing: border-box;
-  border: 2px solid grey;
-  border-radius: 4px;
-}
-input[type=text]:focus {
-  background-color: lightgrey;
-}
-input[type=submit] {
-  background-color: #4CAF50;
-  border: none;
-  color: white;
-  padding: 16px 32px;
-  text-decoration: none;
-  margin: 4px 2px;
-  cursor: pointer;
-}
-  </style>
-</head>
-<body>
-<!-- navbar -->
-    <header>
-    <div class="navbar-fixed">
-        <nav class="nav-wrapper indigo lighten-2">
-            <div class="container">
-                <ul class="left hide-on-med-and-down">
-                    {% if current_user.is_authenticated  %}
-                    {% else %}
-                        <li><a href="/home_teacher">Home</a></li>
-                        <li><a href="/create_lecture">Create Lectures/Notes</a></li>
-                        <li><a href="/create_quiz">Create Quiz</a></li>
-                        <li><a href="/logout">Logout</a></li>
-                    {% endif %}    
-                </ul>
-                <!-- <ul class="sidenav grey lighten-2" id="mobile-menu">
-                        <li><a href="/about">About</a></li>
-                        {% if current_user.is_authenticated  %}
-                            <li>{{current_user.name}}</li>
-                            {% if current_user.role == "d" %}
-                            <li><a href="/view_patient_history">Patient History</a></li>
-                            {% else %}
-                            <li><a href="/generate_otp">Generate OTP</a></li>
-                            {% endif %}
-                            <li><a href="/profile">Profile</a></li>
-                            <li><a href="/logout">Logout</a></li>
-                        {% else %}
-                            <li><a href="/login">Login</a></li>
-                            <li><a href="/register">Sign Up</a></li>
-                        {% endif %}
-                </ul> -->
-            </div>
-        </nav>
-        </div>
-        <div>
-                <h1>Add Problem</h1>
-                
-                <hr>
-                <h2>Add Question</h2>
-                <textarea rows="4" cols="50" name="Question" form="questionform">
-                </textarea>
-                <form action='/create_quiz' method='POST' id="questionform">
-                    <br>
-                    Option1: <input type='text' name='Option1' id='Option1' value="{{quiz.Option1}}">
-                    <br>
-                    Option2: <input type='text' name='Option2' id='Option2' value="{{quiz.Option2}}">
-                    <br>
-                    Option3: <input type='text' name='Option3' id='Option3' value="{{quiz.Option3}}">
-                    <br>
-                    Option4: <input type='text' name='Option4' id='Option4' value="{{quiz.Option4}}">
-                    <br>
-                    Correct_option: <input type='text' name='Correct_option' id='Correct_option' value="{{Correct_option}}">
-                    <br>
-                    <input type='submit' value='Add_question'>
-                    <br>
-                    <input type='submit' value='Submit'>
-                </form>
-                <hr>
-        </div>
-    </header>
-    
-  
-    
-   
-
-<!-- footer -->
-    <!-- <footer class="page-footer grey darken-3">
-        <div class="container">
-            <div class="row">
-                <div class="col s12 l6">
-                    <h5>About us</h5>
-                    <p>A web app for centralisation of patients' medical history, irrespective of his/her location, hospital visited, doctors consulted, making it easier than ever to access his/her medical records and get a clear picture of the entire health history. Multiple doctors can register with this webapp and after getting permission from a user, a particular doctor can access the medical history of the patient. Further, risk assessment based on patient history and location will be implemented, using Machine Learning. </p>
-                </div>
-                <div class="col s12 l4 offset-l2">
-                    <h5>Connect</h5>
-                    <ul>
-                        <li><a href="" class="grey-text text-lighten-3">Facebook</a></li>
-                        <li><a href="" class="grey-text text-lighten-3">Twitter</a></li>
-                        <li><a href="" class="grey-text text-lighten-3">LinkedIn</a></li>
-                        <li><a href="" class="grey-text text-lighten-3">Instagram</a></li>
-                    </ul>
-                </div>
-            </div>
-            
-        </div>
-        <div class="footer-copyright grey darken-4">
-            <div class="container center-align">&copy;2019 HealthSync</div>
-        </div>
-    </footer> -->
-
-
-    <!-- Compiled and minified JavaScript -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
-    <script>
-        $(document).ready(function(){
-           $('.sidenav').sidenav();
-            $(".tabs").tabs();
-            $(".tooltipped").tooltip();
-            $('select').formSelect();
-        });
-    </script>  
-</body>
-</html>
+{% extends 'layout_teacher.html' %}
+{% block content %}
+<div class="container">
+    <h3>Add Problem</h3>
+    <hr>
+    <h6>Add Question</h6>
+    <textarea rows="4" cols="50" name="Question" form="questionform" value="">
+    </textarea>
+    <form action='/create_quiz' method='POST' id="questionform">
+        <br>
+        Option1: <input type='text' name='Option1' id='Option1' value="OPTION1">
+        <br>
+        Option2: <input type='text' name='Option2' id='Option2' value="OPTION2">
+        <br>
+        Option3: <input type='text' name='Option3' id='Option3' value="OPTION3">
+        <br>
+        Option4: <input type='text' name='Option4' id='Option4' value="OPTION4">
+        <br>
+        Correct_option: <input type='text' name='Correct_option' id='Correct_option' value="Correct Answer From Above">
+        <br>
+        <input type='submit' value='Add_question'>
+        <br>
+        <input type='submit' value='Submit'>
+    </form>
+    <hr>
+</div>
+{% endblock %}

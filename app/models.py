@@ -52,7 +52,7 @@ class studentHistory(db.Model):
     marks = db.relationship('scores')
 
     def __repr__(self):
-        return '<studentHistory {} {} {} {}>'.format(self.id, self.name, self.phoneno)
+        return '<studentHistory {} {} {}>'.format(self.id, self.name, self.phoneno)
 
 class lectureHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -61,7 +61,7 @@ class lectureHistory(db.Model):
     teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'))
 
     def __repr__(self):
-        return '<lectureHistory {} {} {} {}>'.format(self.id)
+        return '<lectureHistory {}>'.format(self.id)
 
 class assignments(db.Model):
     id = db.Column(db.Integer, primary_key=True)
