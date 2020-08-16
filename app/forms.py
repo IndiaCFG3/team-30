@@ -23,13 +23,13 @@ class adminRegistrationForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(), EqualTo('password')])
   
-class send_lectures(FlaskForm):
+class send_lectures_form(FlaskForm):
         link = StringField('lecture_link',
                            validators=[DataRequired(), Length(min=2, max=1000)]) 
         transcript = StringField('transcript',
                            validators=[DataRequired(), Length(min=2, max=100000)])
 
-class send_assignments(FlaskForm):
+class send_assignments_form(FlaskForm):
         link = StringField('question',
                            validators=[DataRequired(), Length(min=2, max=1000)]) 
         transcript = StringField('answer',
