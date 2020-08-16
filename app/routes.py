@@ -3,7 +3,7 @@ from app import app, db, data
 from flask_login import login_required, current_user, login_user, logout_user
 from datetime import datetime
 from app.forms import LoginForm, teacherRegistrationForm, adminRegistrationForm, send_lectures_form, send_assignments_form ,CreatenotesForm
-from app.models import teacher, admin, lectureHistory, studentHistory
+from app.models import teacher, admin, lectureHistory
 from functools import wraps
 from sqlalchemy.exc import IntegrityError
 
@@ -36,7 +36,7 @@ def lecture_submit():
 
     form = CreatenotesForm()
     if 1 or form.validate_on_submit():
-        lecture = lectureHistory( link= form.url.data, transcript = form.notes.data, teacher_id = 1 )
+        lecture = lectureHistory( link= form.url.data, transcript = form.notes.data)
         db.session.add(lecture)
         db.session.commit()
 
@@ -95,11 +95,11 @@ def login_teacher():
     form_teacher = LoginForm()
     
     if  1 or form_teacher.validate_on_submit():
-        teacher = teacher.query.filter_by(email=form_teacher.email.data).first()
+        teacher_ = teacher.query.filter_by(email=form_teacher.email.data).first()
         
-        if teacher and teacher.check_password(password=form_teacher.password.data):
+        if teacher_ and teacher_.check_password(password=form_teacher.password.data):
             print("before teacher login")
-            login_user(teacher)
+            login_user(teacher_)
             print("user logged in as teacher")
             data.set_type('teacher')
             next_page = request.args.get('next')

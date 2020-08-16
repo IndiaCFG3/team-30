@@ -49,7 +49,7 @@ class studentHistory(db.Model):
     name = db.Column(db.String(64), index=True, unique=True, nullable=False)
     phoneno = db.Column(db.Integer)
     message_option = db.Column(db.String(1), default='s')
-    marks = db.relationship('scores')
+    # marks = db.Column("marks", db.ARRAY(db.Integer))
 
     def __repr__(self):
         return '<studentHistory {} {} {}>'.format(self.id, self.name, self.phoneno)
@@ -58,7 +58,7 @@ class lectureHistory(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     link = db.Column(db.String(100), index=True, unique=True, nullable=False)
     transcript = db.Column(db.String(100000), index=True)
-    teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'))
+    # teacher_id = db.Column(db.Integer, db.ForeignKey('teacher.id'))
 
     def __repr__(self):
         return '<lectureHistory {}>'.format(self.id)
@@ -72,13 +72,13 @@ class assignments(db.Model):
     option4 = db.Column(db.String(100))
     answer = db.Column(db.Integer)
 
-    scores = db.Column(db.Integer, db.ForeignKey('scores.id'))
+    # scores = db.Column(db.Integer, db.ForeignKey('scores.id'))
 
-class scores(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    marks = db.Column(db.Integer)
-    student_id = db.Column(db.Integer, db.ForeignKey('studentHistory.id'))
-    assignments_id = db.relationship('assignments')
+# class scores(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     marks = db.Column(db.Integer)
+#     student_id = db.Column(db.Integer, db.ForeignKey('studentHistory.id'))
+#     assignments_id = db.relationship('assignments')
 
 @login.user_loader
 def load_teacher(id):
