@@ -16,6 +16,7 @@ def home():
 def home_teacher():
     return render_template('home_teacher.html', title='Home Classroom')
 
+<<<<<<< HEAD
 # @app.route('/login', methods=['GET'])
 # def login():
 #     if current_user.is_authenticated:
@@ -25,6 +26,25 @@ def home_teacher():
 #     form_admin = LoginForm()
 
 #     return render_template('login.html', form_teacher=form_teacher, form_admin=form_admin, title='Login')
+=======
+@app.route('/home_teacher_stream')
+def home_teacher_stream():
+    lec_data = [{"title":"lec1", "date":'25/02/2020'},
+        {"title":"lec2", "date":'23/02/2020'},
+        {"title":"lec3", "date":'25/02/2020'},
+        {"title":"lec4", "date":'28/02/2020'}]
+    quiz_data = [{"title":"quiz1", "status":"completed"}]
+    return render_template('home_teacher_stream.html', title='Stream', lectures=lec_data, quizes=quiz_data)
+
+
+@app.route('/login', methods=['GET'])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('home'))
+    form_teacher = LoginForm()
+    form_admin = LoginForm()
+    return render_template('login.html', form_teacher=form_teacher, form_admin=form_admin, title='Login')
+>>>>>>> Teacher Home Page Added and Streams Page Linked
 
 @app.route('/login_admin', methods=['POST', 'GET'])
 def login_admin():

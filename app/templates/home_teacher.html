@@ -1,5 +1,97 @@
 {% extends 'layout_teacher.html' %}
+{% block head %} 
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<script type="text/javascript">
+
+window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer", {
+		title:{
+			text: "Top 10 Studnets Performance"              
+		},
+		data: [              
+		{
+			// Change type to "doughnut", "line", "splineArea", etc.
+			type: "column",
+			dataPoints: [
+				{ label: "Zenaida Decker",  y: 55  },
+				{ label: "Caldwell Skinner", y: 15  },
+				{ label: "Hakeem Gillespie", y: 25  },
+				{ label: "Griffin Mcleod",  y: 30  },
+				{ label: "Allistair Patton",  y: 28  },
+                { label: "Zenazj Decker",  y: 55  },
+				{ label: "cdcdldwell Skinner", y: 15  },
+				{ label: "Hakeem Gillespie", y: 25  },
+				{ label: "Griffin Mcleod",  y: 30  },
+				{ label: "Allistair Patton",  y: 28  }
+			]
+		}
+		]
+	});
+    var chart1 = new CanvasJS.Chart("chartContainer1",
+    {
+
+      title:{
+      text: "Average Scores of Past Tests"
+      },
+       data: [
+      {
+        type: "line",
+
+        dataPoints: [
+        { x: new Date(2012, 00, 1), y: 450 },
+        { x: new Date(2012, 01, 1), y: 414 },
+        { x: new Date(2012, 02, 1), y: 520 },
+        { x: new Date(2012, 03, 1), y: 460 },
+        { x: new Date(2012, 04, 1), y: 450 },
+        { x: new Date(2012, 05, 1), y: 500 },
+        { x: new Date(2012, 06, 1), y: 480 },
+        { x: new Date(2012, 07, 1), y: 480 },
+        { x: new Date(2012, 08, 1), y: 410 },
+        { x: new Date(2012, 09, 1), y: 500 },
+        { x: new Date(2012, 10, 1), y: 480 },
+        { x: new Date(2012, 11, 1), y: 510 }
+        ]
+      }
+      ]
+    });
+
+    chart.render();
+	chart1.render();
+}
+</script>
+{% endblock %}
 {% block content %}
+<div class="container">
+    <h4>Statistics</h4>
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button type="button" class="btn btn-secondary active">Last Test</button>
+        <button type="button" class="btn btn-secondary">Last 10 Test</button>
+        <button type="button" class="btn btn-secondary">Overall</button>
+      </div>
+    <div class = "conatiner">
+        <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+    </div>
+    <h1></h1>
+    <div style="display: flex; flex-direction: row; justify-content: space-between;">
+        <div style="display: flex; flex-direction: column;">
+            <h5 style="padding:0; color: rgb(131, 131, 131);">Average Score</h5>
+            <h2>54</h2>
+        </div>
+        <div>
+            <h5 style="padding:0;color: rgb(131, 131, 131);">Top Score</h5>
+            <h2>87</h2>
+        </div>
+        <div style="display: flex; flex-direction: column;">
+            <h5 style="padding:0;color: rgb(131, 131, 131);">Min Score</h5>
+            <h2>12</h2>
+        </div>
+    </div>
+    <hr style="margin-top: 50px; margin-bottom: 80px;">
+    <div id="chartContainer1" style="height: 300px; width: 100%;">
+    </div>
+</div>
+
+
     <!-- <div class="parallax-container">
         <div class="parallax">
             <img src="{{url_for('static', filename='large.jpg')}}" alt="home_doc" class="responsive-img">
@@ -40,6 +132,7 @@
                 </h5>
             </div>
         </div> -->
+
     </section>
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 
