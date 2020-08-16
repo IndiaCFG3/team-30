@@ -2,15 +2,7 @@
 <head>
 <title>
 		Admin Login</title>
-<<<<<<< HEAD
-<<<<<<< HEAD
 		<link rel="shortcut icon" href="../static/logoWithoutBg.png" type="image/x-icon">
-=======
-		<link rel="shortcut icon" href="{{url_for('static', filename='logoWithoutBg.png')}}" type="image/x-icon">
->>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
-=======
-		<link rel="shortcut icon" href="{{url_for('static', filename='logoWithoutBg.png')}}" type="image/x-icon">
->>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 td{
@@ -66,16 +58,7 @@ input[type=submit]:focus{
 }
 		
 html { 
-<<<<<<< HEAD
-<<<<<<< HEAD
-  background: url(../static/AdminLgBg.jpg) no-repeat center fixed; /*fire_smokebg.jpg*/
-=======
-  background: url("{{url_for('static', filename='AdminLgBg.jpg')}}") no-repeat center fixed; /*fire_smokebg.jpg*/
->>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
-=======
-  background: url("{{url_for('static', filename='AdminLgBg.jpg')}}") no-repeat center fixed; /*fire_smokebg.jpg*/
->>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
-  background-size: cover;
+  background: url(../static/loginBg.jpg) no-repeat center fixed; /*fire_smokebg.jpg*/
 }
 .fa {
   padding: 10px;
@@ -114,15 +97,9 @@ margin-left:50px;
 </style>
 </head>
 <body>
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 <img src="../static/logoWithoutBg.png" style="margin-left:550px;"/>
-=======
-<img src="{{url_for('static', filename='logoWithoutBg.png')}}" style="margin-left:550px;"/>
->>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
-=======
-<img src="{{url_for('static', filename='logoWithoutBg.png')}}" style="margin-left:550px;"/>
->>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
+
 
 <!-- Put your method in the form-->
 
@@ -156,9 +133,6 @@ margin-left:50px;
 		<td ><a href="{{url_for('login_teacher')}}" class="link" >Teacher Login?</a></td>
 	</tr>
 	<tr><td></td></tr>
-	<tr>
-		<td ><a href="#" class="link" >Forgot Password?</a></td>
-	</tr>
 </table>
 <tr><td></br></td></tr>
 </fieldset> 

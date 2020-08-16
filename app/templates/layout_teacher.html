@@ -27,14 +27,11 @@
         <nav class="nav-wrapper indigo lighten-2">
             <div class="container">
                 <ul class="left hide-on-med-and-down">
-                    {% if current_user.is_authenticated  %}
-                    {% else %}
                         <li><a href="/home_teacher">Home</a></li>
                         <li><a href="/home_teacher_stream">Stream</a></li>
                         <li><a href="/lecture_submit">Create Lectures/Notes</a></li>
                         <li><a href="/create_quiz">Create Quiz</a></li>
-                        <li><a href="/logout">Logout</a></li>
-                    {% endif %}    
+                        <li><a href="/logout">Logout</a></li>  
                 </ul>
                 <!-- <ul class="sidenav grey lighten-2" id="mobile-menu">
                         <li><a href="/about">About</a></li>
