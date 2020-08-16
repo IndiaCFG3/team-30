@@ -96,20 +96,17 @@ def register():
     form_teacher = teacherRegistrationForm()
     form_admin = adminRegistrationForm()
 
-    return render_template('register.html', form_teacher=form_teacher, form_admin=form_admin, title="Sign Up")
+    return render_template('register_teacher.html', form_teacher=form_teacher, form_admin=form_admin, title="Sign Up")
 
 @app.route('/register_teacher', methods = ['POST'])
 def register_teacher():
     form_teacher = teacherRegistrationForm()
 
     if 1 or form_teacher.validate_on_submit():
-        teacher = teacher(name = form_teacher.name.data, email = form_teacher.email.data, 
-                          age = form_teacher.age.data, gender = form_teacher.gender.data,
-                          height = form_teacher.height.data, weight = form_teacher.weight.data,
-                          bloodgroup = form_teacher.bloodgroup.data, location = form_teacher.location.data)
-        teacher.set_password(form_teacher.password.data)
+        teacher_ = teacher(name = form_teacher.name.data, email = form_teacher.email.data)
+        teacher_.set_password(form_teacher.password.data)
 
-        db.session.add(teacher)
+        db.session.add(teacher_)
         db.session.commit()
     
     else:
@@ -122,9 +119,7 @@ def register_admin():
     form_admin = adminRegistrationForm()
      
     if 1 or form_admin.validate_on_submit():
-        admin = admin(name = form_admin.name.data, email = form_admin.email.data,
-                         location = form_admin.location.data, degree = form_admin.degree.data,
-                         specialisation = form_admin.specialisation.data)
+        admin = admin(name = form_admin.name.data, email = form_admin.email.data)
         admin.set_password(form_admin.password.data)
 
         db.session.add(admin)
