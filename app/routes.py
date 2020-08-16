@@ -10,73 +10,43 @@ from sqlalchemy.exc import IntegrityError
 @app.route('/', methods=['GET'])
 @app.route('/home')
 def home():
-    return render_template('home_teacher.html', title='Home Classroom')
+    return render_template('home.html', title='Home')
 
-@app.route('/home_teacher')
-def home_teacher():
-    return render_template('home_teacher.html', title='Home Classroom')
+# @app.route('/login', methods=['GET'])
+# def login():
+#     if current_user.is_authenticated:
+#         return redirect(url_for('home'))
+#     form_teacher = LoginForm()
+#     form_admin = LoginForm()
+#     return render_template('login.html', form_teacher=form_teacher, form_admin=form_admin, title='Login')
 
-<<<<<<< HEAD
-@app.route('/create_lecture', methods=['GET', 'POST'])
-def create_lecture():
-    return render_template('create_lecture.html',title='create lecture',form=CreatenotesForm())
+# @app.route('/login_admin', methods=['POST', 'GET'])
+# def login_admin():
+#     if current_user.is_authenticated:
+#         print("redirected from login admin")
+#         return redirect(url_for('home'))
 
-@app.route('/lecture_submit', methods=['POST'])
-def lecture_submit():
-    form=CreatenotesForm()
-    if form.validate_on_submit:
-        return redirect(url_for('home'))
-    
+#     if request.method == 'GET':
+#         form_admin = LoginForm()
+#         return render_template('AdLogin.html', form_admin=form_admin, title='Login Admin')
 
+#     form_admin = LoginForm()
 
-@app.route('/home_teacher_stream')
-def home_teacher_stream():
-    lec_data = [{"title":"lec1", "date":'25/02/2020'},
-        {"title":"lec2", "date":'23/02/2020'},
-        {"title":"lec3", "date":'25/02/2020'},
-        {"title":"lec4", "date":'28/02/2020'}]
-    quiz_data = [{"title":"quiz1", "status":"completed"}]
-    return render_template('home_teacher_stream.html', title='Stream', lectures=lec_data, quizes=quiz_data)
+#     if 1 or form_admin.validate_on_submit():
+#         admin = admin.query.filter_by(email=form_admin.email.data).first()
+#         if admin and admin.check_password(password=form_admin.password.data):
+#             print("before admin login")
+#             login_user(admin)
+#             print("user logged in as admin")
+#             data.set_type('admin')
+#             next_page = request.args.get('next')
+#             return redirect(next_page) if next_page else redirect(url_for('home_teacher'))
+#         else:
+#             print('Login unsuccessful. Please check mail and password')
+#             flash('Login unsuccessful. Please check mail and password')
+#             return redirect(url_for('login'))
 
-
-
-@app.route('/login', methods=['GET'])
-def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('home'))
-    form_teacher = LoginForm()
-    form_admin = LoginForm()
-    return render_template('login.html', form_teacher=form_teacher, form_admin=form_admin, title='Login')
->>>>>>> Teacher Home Page Added and Streams Page Linked
-
-@app.route('/login_admin', methods=['POST', 'GET'])
-def login_admin():
-    if current_user.is_authenticated:
-        print("redirected from login admin")
-        return redirect(url_for('home'))
-
-    if request.method == 'GET':
-        form_admin = LoginForm()
-        return render_template('AdLogin.html', form_admin=form_admin, title='Login Admin')
-
-    form_admin = LoginForm()
-
-    if 1 or form_admin.validate_on_submit():
-        admin = admin.query.filter_by(email=form_admin.email.data).first()
-        # print(admin.role)
-        if admin and admin.check_password(password=form_admin.password.data):
-            print("before admin login")
-            login_user(admin)
-            print("user logged in as admin")
-            data.set_type('admin')
-            next_page = request.args.get('next')
-            return redirect(next_page) if next_page else redirect(url_for('home'))
-        else:
-            print('Login unsuccessful. Please check mail and password')
-            flash('Login unsuccessful. Please check mail and password')
-            return redirect(url_for('login'))
-
-    return redirect(url_for('login'))
+#     return redirect(url_for('login'))
 
 @app.route('/login_teacher', methods=['POST', 'GET'])
 def login_teacher():
@@ -86,7 +56,7 @@ def login_teacher():
 
     if request.method == 'GET':
         form_teacher = LoginForm()
-        return render_template('TloginPage.html', form_teacher=form_teacher, title='Login')
+        return render_template('TloginPage.html', form_teacher=form_teacher, title='Login Teacher')
 
     form_teacher = LoginForm()
     
@@ -100,7 +70,7 @@ def login_teacher():
             data.set_type('teacher')
             next_page = request.args.get('next')
             
-            return redirect(next_page) if next_page else redirect(url_for('home'))
+            return redirect(next_page) if next_page else redirect(url_for('home_teacher'))
         else:
             print('Login unsuccessful. Please check mail and password')
             flash('Login unsuccessful. Please check mail and password')
@@ -108,11 +78,11 @@ def login_teacher():
 
     return redirect(url_for('login'))
 
-@app.route('/logout')
-def logout():
-    data.set_type('nil')
-    logout_user()
-    return redirect(url_for('home'))
+# @app.route('/logout')
+# def logout():
+#     data.set_type('nil')
+#     logout_user()
+#     return redirect(url_for('home'))
 
 @app.route('/register_teacher', methods = ['POST', 'GET'])
 def register_teacher():
@@ -134,46 +104,71 @@ def register_teacher():
 
     return redirect(url_for('home'))    
 
-@app.route('/register_admin', methods = ['POST', 'GET'])
-def register_admin():
-    form_admin = adminRegistrationForm()
+# @app.route('/register_admin', methods = ['POST', 'GET'])
+# def register_admin():
+#     form_admin = adminRegistrationForm()
 
-    if request.method == 'GET':
-        form_admin = adminRegistrationForm()
-        return render_template('Treg    .html', form_admin=form_admin, title='Register Admin')
+#     if request.method == 'GET':
+#         form_admin = adminRegistrationForm()
+#         return render_template('Treg    .html', form_admin=form_admin, title='Register Admin')
      
-    if 1 or form_admin.validate_on_submit():
-        admin = admin(name = form_admin.name.data, email = form_admin.email.data)
-        admin.set_password(form_admin.password.data)
+#     if 1 or form_admin.validate_on_submit():
+#         admin = admin(name = form_admin.name.data, email = form_admin.email.data)
+#         admin.set_password(form_admin.password.data)
 
-        db.session.add(admin)
-        db.session.commit()
+#         db.session.add(admin)
+#         db.session.commit()
     
-    else:
-        flash("error in signing up")
+#     else:
+#         flash("error in signing up")
 
-    return redirect(url_for('home'))
+#     return redirect(url_for('home'))
 
-@app.route('/send_lecture', methods=['GET', 'POST'])
-@login_required
-def add_teacher_data():
-    lecture = send_lecture_form()
+# @app.route('/send_lecture', methods=['GET', 'POST'])
+# @login_required
+# def add_teacher_data():
+#     lecture = send_lecture_form()
 
-    if request.method == 'GET':
-        return render_template('analysis.html', teacher_history=teacher_history, title="Add teacher Data")
+#     if request.method == 'GET':
+#         return render_template('analysis.html', teacher_history=teacher_history, title="Add teacher Data")
 
-    teacher_t = teacher.query.filter_by(otp = teacher_history.otp_add.data).first()
-    print(teacher_t)
-    if teacher_t:
-        p_history = teacherHistory(teacher_id=teacher_t.id,
-                                   symptoms=teacher_history.symptoms.data, 
-                                   diagnosis=teacher_history.diagnosis.data,
-                                   treatment=teacher_history.treatment.data)
-        db.session.add(p_history)
-        db.session.commit()
-        print('validated')
-        return redirect('view_teacher_history')
-    else:
-        print("error, try again")
-        flash("Error, Try again")
+#     teacher_t = teacher.query.filter_by(otp = teacher_history.otp_add.data).first()
+#     print(teacher_t)
+#     if teacher_t:
+#         p_history = teacherHistory(teacher_id=teacher_t.id,
+#                                    symptoms=teacher_history.symptoms.data, 
+#                                    diagnosis=teacher_history.diagnosis.data,
+#                                    treatment=teacher_history.treatment.data)
+#         db.session.add(p_history)
+#         db.session.commit()
+#         print('validated')
+#         return redirect('view_teacher_history')
+#     else:
+#         print("error, try again")
+#         flash("Error, Try again")
+
+# @app.route('/home_teacher')
+# @login_required
+# def home_teacher():
+#     return render_template('home_teacher.html', title='Home Classroom')
+
+# @app.route('/create_lecture', methods=['GET', 'POST'])
+# def create_lecture():
+#     return render_template('create_lecture.html',title='create lecture',form=CreatenotesForm())
+
+# @app.route('/lecture_submit', methods=['POST'])
+# def lecture_submit():
+#     form=CreatenotesForm()
+#     if form.validate_on_submit:
+#         return redirect(url_for('home'))
+    
+# @app.route('/home_teacher_stream')
+# def home_teacher_stream():
+#     lec_data = [{"title":"lec1", "date":'25/02/2020'},
+#         {"title":"lec2", "date":'23/02/2020'},
+#         {"title":"lec3", "date":'25/02/2020'},
+#         {"title":"lec4", "date":'28/02/2020'}]
+#     quiz_data = [{"title":"quiz1", "status":"completed"}]
+#     return render_template('home_teacher_stream.html', title='Stream', lectures=lec_data, quizes=quiz_data)
+
 

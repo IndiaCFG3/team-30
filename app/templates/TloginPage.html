@@ -2,7 +2,7 @@
 <head>
 <title>
 		Login</title>
-		<link rel="shortcut icon" href="logoWithoutBg.png" type="image/x-icon">
+		<link rel="shortcut icon" href=" {{url_for('static', filename='logoWithoutBg.png')}} " type="image/x-icon">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 td{
@@ -56,7 +56,7 @@ input[type=submit]:focus{
 }
 		
 html { 
-  background: url(loginBg.jpg) no-repeat center fixed; /*fire_smokebg.jpg*/
+  background: url("{{url_for('static', filename='loginBg.jpg')}}") no-repeat center fixed; /*fire_smokebg.jpg*/
   background-size: cover;
 }
 .fa {
@@ -96,11 +96,12 @@ margin-left:50px;
 </style>
 </head>
 <body>
-<img src="logoWithoutBg.png" style="margin-left:550px;"/>
+
+<img src="{{url_for('static', filename='logoWithoutBg.png')}}" style="margin-left:550px;"/>
 
 <!-- Put your method in the form-->
 
-<form name="f1" onsubmit="return validate();" method="post" action="#">
+<form name="f1" onsubmit="return validate();" method="post" action="/login_teacher">
 <fieldset style="position:fixed; border:none; top:50%; left:50%; margin-top:-150px; border-radius:5px; margin-left:-200px;  background-color:white; color:white; width:350px; height:450px;">
 <p style="padding-left:35%; font-weight:bolder; font-size:25px; color:black; font-family:'Verdana',sans-serif;">Login</p>
 <span style="color:red; font-size:16px; width:500px;" id="sp1"></span>
@@ -109,14 +110,14 @@ margin-left:50px;
 		<td class="pos">Username</td>
 		</tr>
 		<tr>
-		<td><input autocomplete="off" placeholder="Enter Username" type="text" name="lgtxt1" id="lg1" required></input></td>
+		<td><input autocomplete="off" placeholder="Enter Username" type="text" name="{{ form_teacher.email.name }}" id="email" required></input></td>
 		</tr>
 	<tr><td></br></td></tr>
 	<tr>
 		<td class="pos">Password</td>
 		</tr>
 		<tr>
-		<td><input type="password" placeholder="Enter Password" name="lgtxt2" required></input></td>
+		<td><input type="password" placeholder="Enter Password" name="{{ form_teacher.password.name }}" id = "password" required></input></td>
 	</tr>
 	<tr><td></br></td></tr>
 	<tr>
@@ -125,7 +126,6 @@ margin-left:50px;
 	<tr><td></br></td></tr>
 	
 	<!--other inks-->
-	
 	<tr>
 		<td ><a href="Treg.html" class="link" >Don't have an account?</a></td>
 	</tr>
