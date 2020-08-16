@@ -78,10 +78,10 @@ textarea:focus
 }
 </style>
 </head>
-<body style="background-image: url('TregBg.jpg') ">
-<img src="logoWithoutBg.png" style="width:300px; margin-left:550px; height:300px;"/>
+<body style="background-image: {{url_for('static', filename='TregBg.jpg')}} ">
+<img src="{{url_for('static', filename='logoWithoutBg.png')}}" style="width:300px; margin-left:550px; height:300px;"/>
 <form name="main" onsubmit="return validate_info();"   autocomplete="off" method="post" action="/register_teacher">
-<div style="  background-image: url('TregBg.jpg') color:Black; border-radius:15px 50px;  width:600px;";>
+<div style="  background-image: {{url_for('static', filename='TregBg.jpg')}} color:Black; border-radius:15px 50px;  width:600px;";>
 <!--<fieldset style="border-radius:15px 50px;">
 <legend style="text-align:center; font-size:25px;">NEW_REGISTERATION</legend>-->
 <p style="font-family:Impact,Charcoal,sans-serif; font-weight:bold; font-size:60px;">Teacher Registration</p>
