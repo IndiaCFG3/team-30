@@ -20,33 +20,33 @@ def home():
 #     form_admin = LoginForm()
 #     return render_template('login.html', form_teacher=form_teacher, form_admin=form_admin, title='Login')
 
-# @app.route('/login_admin', methods=['POST', 'GET'])
-# def login_admin():
-#     if current_user.is_authenticated:
-#         print("redirected from login admin")
-#         return redirect(url_for('home'))
+@app.route('/login_admin', methods=['POST', 'GET'])
+def login_admin():
+    if current_user.is_authenticated:
+        print("redirected from login admin")
+        return redirect(url_for('home'))
 
-#     if request.method == 'GET':
-#         form_admin = LoginForm()
-#         return render_template('AdLogin.html', form_admin=form_admin, title='Login Admin')
+    if request.method == 'GET':
+        form_admin = LoginForm()
+        return render_template('AdLogin.html', form_admin=form_admin, title='Login Admin')
 
-#     form_admin = LoginForm()
+    form_admin = LoginForm()
 
-#     if 1 or form_admin.validate_on_submit():
-#         admin = admin.query.filter_by(email=form_admin.email.data).first()
-#         if admin and admin.check_password(password=form_admin.password.data):
-#             print("before admin login")
-#             login_user(admin)
-#             print("user logged in as admin")
-#             data.set_type('admin')
-#             next_page = request.args.get('next')
-#             return redirect(next_page) if next_page else redirect(url_for('home_teacher'))
-#         else:
-#             print('Login unsuccessful. Please check mail and password')
-#             flash('Login unsuccessful. Please check mail and password')
-#             return redirect(url_for('login'))
+    if 1 or form_admin.validate_on_submit():
+        admin = admin.query.filter_by(email=form_admin.email.data).first()
+        if admin and admin.check_password(password=form_admin.password.data):
+            print("before admin login")
+            login_user(admin)
+            print("user logged in as admin")
+            data.set_type('admin')
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('home_teacher'))
+        else:
+            print('Login unsuccessful. Please check mail and password')
+            flash('Login unsuccessful. Please check mail and password')
+            return redirect(url_for('login'))
 
-#     return redirect(url_for('login'))
+    return redirect(url_for('login'))
 
 @app.route('/login_teacher', methods=['POST', 'GET'])
 def login_teacher():
