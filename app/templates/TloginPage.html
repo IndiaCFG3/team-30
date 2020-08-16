@@ -2,11 +2,8 @@
 <head>
 <title>
 		Login</title>
-<<<<<<< HEAD
+
 		<link rel="shortcut icon" href="../static/logoWithoutBg.png" type="image/x-icon">
-=======
-		<link rel="shortcut icon" href=" {{url_for('static', filename='logoWithoutBg.png')}} " type="image/x-icon">
->>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 td{
@@ -60,12 +57,7 @@ input[type=submit]:focus{
 }
 		
 html { 
-<<<<<<< HEAD
   background: url(../static/loginBg.jpg) no-repeat center fixed; /*fire_smokebg.jpg*/
-=======
-  background: url("{{url_for('static', filename='loginBg.jpg')}}") no-repeat center fixed; /*fire_smokebg.jpg*/
->>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
-  background-size: cover;
 }
 .fa {
   padding: 10px;
@@ -104,12 +96,8 @@ margin-left:50px;
 </style>
 </head>
 <body>
-<<<<<<< HEAD
 <img src="../static/logoWithoutBg.png" style="margin-left:550px;" />
-=======
 
-<img src="{{url_for('static', filename='logoWithoutBg.png')}}" style="margin-left:550px;"/>
->>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
 
 <!-- Put your method in the form-->
 
@@ -138,11 +126,20 @@ margin-left:50px;
 	<tr><td></br></td></tr>
 	
 	<!--other inks-->
+<<<<<<< HEAD
 	<tr>
 <<<<<<< HEAD
 		<td ><a href="register_teacher.html" class="link" >Don't have an account?</a></td>
 =======
 		<td ><a href="{{url_for('register_teacher')}}" class="link" >Don't have an account?</a></td>
+>>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
+=======
+	<tr>
+		<td ><a href="{{url_for('register_teacher')}}" class="link" >Don't have an account?</a></td>
+	</tr>
+	<tr><td></td></tr>
+	<tr>
+		<td ><a href="{{url_for('login_admin')}}" class="link" >Admin Login?</a></td>
 >>>>>>> dc5d080b29ca477dcbe8618ddc0ecf98dc00f354
 	</tr>
 	<tr><td></td></tr>
