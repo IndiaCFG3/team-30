@@ -1,0 +1,156 @@
+<html>
+<head>
+<title>
+		Admin Login</title>
+		<link rel="shortcut icon" href="logoWithoutBg.png" type="image/x-icon">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+td{
+	color:white;
+	font-size:16px;
+	font-weight:Bolder;
+	font-family:"Arial",sans-serif;
+	padding-left:30px;
+}
+input[type=text]{
+					
+					height:50px;
+					width:270px;
+					background-color:#21395f;
+					color:#c4d4db;
+					border:none;
+				
+					font-size:16px;
+					border-bottom: 2px solid grey;
+					font-family:"Arial",sans-serif;
+				}
+input[type=password]{
+					height:50px;
+					width:270px;
+					background-color:#21395f;
+					color:#c4d4db;
+					border:none;
+					
+					font-size:16px;
+					border-bottom: 2px solid grey;
+					font-family:"Arial",sans-serif;
+				}
+input[type=submit]:focus{
+							outline:none;
+							}
+							
+.pos{
+	
+	color:white;
+	font-size:14px;
+	font-family:"Arial",sans-serif;
+	padding-left:30px;
+	}
+	.pos_bt
+	{
+		padding-left:25px;
+		}
+.link{
+	font-size:14px;
+	color:grey;
+	text-decoration:none;
+	font-weight:1;
+}
+		
+html { 
+  background: url(AdminLgBg.jpg) no-repeat center fixed; /*fire_smokebg.jpg*/
+  background-size: cover;
+}
+.fa {
+  padding: 10px;
+  font-size: 20px;
+  width: 20px;
+  text-align: center;
+  text-decoration: none;
+  border-radius:40px;
+  margin: 5px 7px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+}
+
+.fa-facebook {
+margin-left:50px;
+  background: #3B5998;
+  color: white;
+}
+
+.fa-twitter {
+  background: #55ACEE;
+  color: white;
+}
+
+.fa-google {
+  background: #dd4b39;
+  color: white;
+}
+
+.fa-linkedin {
+  background: #007bb5;
+  color: white;
+}
+</style>
+</head>
+<body>
+<img src="logoWithoutBg.png" style="margin-left:550px;"/>
+
+<!-- Put your method in the form-->
+
+<form name="f1" onsubmit="return validate();" method="post" action="#">
+<fieldset style="position:fixed; border:none; top:50%; left:50%; margin-top:-150px; border-radius:5px; margin-left:-200px;  background-color:#21395f; color:white; width:350px; height:450px;">
+<p style="padding-left:20%; font-size:32px; color:white; font-family:'Verdana',sans-serif;">Admin Login</p>
+<span style="color:red; font-size:16px; width:500px;" id="sp1"></span>
+<table>
+	<tr>
+		<td class="pos">Username</td>
+		</tr>
+		<tr>
+		<td><input autocomplete="off" placeholder="Enter Username" type="text" name="lgtxt1" id="lg1" required></input></td>
+		</tr>
+	<tr><td></br></td></tr>
+	<tr>
+		<td class="pos">Password</td>
+		</tr>
+		<tr>
+		<td><input type="password" placeholder="Enter Password" name="lgtxt2" required></input></td>
+	</tr>
+	<tr><td></br></td></tr>
+	<tr>
+		<td class="pos_bt"><input type="submit" name="sub1" Value="LOGIN" style="width:300; outline:none; border:none;font-size:15px; font-family:'Arial',sans-serif; border-color:black; background-color:#7d8dde; padding:10px 10px 10px 10px; cursor:pointer; border-radius:40px; color:white;"> </input></td>
+	</tr>
+	<tr><td></br></td></tr>
+	
+	<!--other inks-->
+	<tr><td></td></tr>
+	<tr>
+		<td ><a href="TloginPage.html" class="link" >Teacher Login?</a></td>
+	</tr>
+	<tr><td></td></tr>
+	<tr>
+		<td ><a href="#" class="link" >Forgot Password?</a></td>
+	</tr>
+</table>
+<tr><td></br></td></tr>
+</fieldset> 
+
+</form>
+
+<script type="text/javascript" language="javascript">
+function validate()
+{
+	var uname=document.f1.lgtxt1.value;
+	if(uname.length<5)
+	{
+			document.getElementById('sp1').innerHTML="**Username should be of atleast 5 characters.";
+				return false;
+	}
+}
+</script>
+</body>
+</html>
