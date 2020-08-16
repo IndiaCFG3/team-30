@@ -1,0 +1,23 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="container">
+<div class="login">
+	<h3 class="center-align">Predict Disease Analysis</h3>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="/predict" method="post">
+    	<input type="text" name="{{predict_.location.name}}" placeholder="Location" required="required" />
+        
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+   <div container="card">
+   <div class="card-content">
+   <p class="flow-text center-align">Increase in % of deaths due to PM 2.5 pollution: {{ prediction_text }} </p>
+    </div></div>
+</div>
+<img src="{{url_for('static', filename= "esd.png")}}" class="responsive-img center-align">
+</div>
+{% endblock %}

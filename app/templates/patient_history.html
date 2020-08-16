@@ -1,0 +1,129 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+<style>
+.timeline {
+  position: relative;
+}
+
+.timeline .timeline-event {
+  position: relative;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+.timeline .timeline-event .timeline-content {
+  position: relative;
+  width: calc(50% - 50px);
+}
+
+.timeline .timeline-event::before {
+  display: block;
+  content: "";
+  width: 2px;
+  height: calc(50% - 30px);
+  position: absolute;
+  background: #d2d2d2;
+  left: calc(50% - 1px);
+  top: 0;
+}
+
+.timeline .timeline-event::after {
+  display: block;
+  content: "";
+  width: 2px;
+  height: calc(50% - 30px);
+  position: absolute;
+  background: #d2d2d2;
+  left: calc(50% - 1px);
+  top: calc(50% + 30px);
+}
+
+.timeline .timeline-event:first-child::before {
+  display: none;
+}
+
+.timeline .timeline-event:last-child::after {
+  display: none;
+}
+
+.timeline .timeline-event:nth-child(even) .timeline-content {
+  margin-left: calc(50% + 50px);
+}
+
+.timeline .timeline-event:nth-child(odd) .timeline-content {
+  margin-left: 0;
+}
+
+.timeline .timeline-badge {
+  display: block;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  background:#d2d2d2;
+  top: calc(50% - 20px);
+  right: calc(50% - 20px);
+  border-radius: 50%;
+  text-align: center;
+  cursor: default;
+}
+
+.timeline .timeline-badge i {
+  font-size: 25px;
+  line-height: 40px;
+}
+
+</style>
+
+<!--    Patient Profile     -->
+<div class="container">
+    <div class="row">
+        <div class="card horizontal col l8 offset-l2" style="padding: 0">
+            <div class="">
+                <img class="responsive-img circle" src="https://lorempixel.com/120/120/nature/6">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <p class="flow-text">{{patient.name}}</p> <!-- Add name variable -->
+                    <h6>Gender: {{patient.gender}}</h6>
+                    <h6>Age: {{patient.age}}</h6>
+                    <h6>Location: {{patient.location}}</h6>
+                </div>
+                <div class="card-action">
+                    <a href="mailto:{{patient.email}}">Contact through email</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+            <div class="card horizontal col l8 offset-l2" style="padding: 0">
+                <div class="">
+                        <img class="responsive-img circle" src="https://lorempixel.com/120/120/nature/6">
+                    </div>
+                <div class="card-stacked">
+                    <div class="card-content">
+                        <h6>Height: {{patient.height}}</h6>
+                        <h6>Weight: {{patient.weight}}</h6>
+                        <h6>Blood group: {{patient.bloodgroup}}</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            
+    <div class="container">
+      <div class="timeline">
+        {% for post in patient_history %}
+          {% include 'history_card.html' %}
+        {% endfor %}          
+      </div>
+    </div>
+      <div class="input-field center" >
+        <a href="/add_patient_data" class="btn" id="doc_add_details">Add additional details</a>
+      </div>
+
+
+
+
+{% endblock %}
