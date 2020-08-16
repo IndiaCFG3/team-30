@@ -21,3 +21,6 @@ def sendWhatsapp(student,text):
                             )
 
   print(message.sid)
+
+sendSMS("7020402120", "hello world from twilio")
+sendWhatsapp("7020402120", "hello world from twilio")

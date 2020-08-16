@@ -90,7 +90,7 @@ def register_teacher():
 
     if request.method == 'GET':
         form_teacher = teacherRegistrationForm()
-        return render_template('Treg.html', form_teacher=form_teacher, title='Register teacher')
+        return render_template('register_teacher.html', form_teacher=form_teacher, title='Register teacher')
 
     if 1 or form_teacher.validate_on_submit():
         teacher_ = teacher(name = form_teacher.name.data, email = form_teacher.email.data)
