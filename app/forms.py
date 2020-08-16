@@ -62,4 +62,10 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators=[DataRequired()])
     remember_me = BooleanField('Remember Me')
 
+class CreatenotesForm(FlaskForm):
+    title = StringField('Title',validators=[DataRequired(),Length(min=2)])
+    url=StringField('Url',validators=[Length(min=2)])
+    notes=StringField('Notes',validators=[DataRequired(),Length(min=10)])
+    submit=SubmitField('Submit')
+
 

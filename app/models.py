@@ -5,6 +5,8 @@ from hashlib import md5
 from datetime import datetime
 from app import data
 
+
+
 class teacher(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), index=True)

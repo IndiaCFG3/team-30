@@ -2,7 +2,7 @@ from flask import render_template, flash, redirect, url_for, request
 from app import app, db, data
 from flask_login import login_required, current_user, login_user, logout_user
 from datetime import datetime
-from app.forms import LoginForm, teacherRegistrationForm, adminRegistrationForm
+from app.forms import LoginForm, teacherRegistrationForm, adminRegistrationForm , CreatenotesForm
 from app.models import teacher, admin
 from functools import wraps
 from sqlalchemy.exc import IntegrityError
@@ -16,6 +16,17 @@ def home():
 @app.route('/home_teacher')
 def home_teacher():
     return render_template('home_teacher.html', title='Home Classroom')
+
+@app.route('/create_lecture', methods=['GET', 'POST'])
+def create_lecture():
+    return render_template('create_lecture.html',title='create lecture',form=CreatenotesForm())
+
+@app.route('/lecture_submit', methods=['POST'])
+def lecture_submit():
+    form=CreatenotesForm()
+    if form.validate_on_submit:
+        return redirect(url_for('home'))
+    
 
 @app.route('/login', methods=['GET'])
 def login():
