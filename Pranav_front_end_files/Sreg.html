@@ -1,0 +1,205 @@
+<html>
+<head>
+<title>
+		Student Registration</title>
+		<link rel="shortcut icon" href="logoWithoutBg.png" type="image/x-icon">
+<style>
+td{
+	color:white;
+	font-size:25px;
+	font-weight:Bolder;
+	font-family:"Arial",sans-serif;
+}
+body {
+  margin: 0;
+}
+
+a:hover{
+			color:DodgerBlue;
+			font-weight:bold;
+		}
+		
+input[type=text]{
+					
+					height:50px;
+					width:350px;
+					border-radius:10px;
+				background-color:black; 
+					color:Tan;
+					border:none;
+					font-size:20px;
+					border-bottom: 5px solid DodgerBlue;
+					font-family:"Arial",sans-serif;
+					padding-left:60px;
+					margin-left:10px;
+				}
+input[type=password]{
+					height:50px;
+					width:350px;
+					border-radius:10px;
+					background-color:black;
+					color:Tan;
+					border:none;
+					font-size:20px;
+					border-bottom: 5px solid DodgerBlue;
+					font-family:"Arial",sans-serif;
+					padding-left:60px;
+					margin-left:10px;
+				}
+textarea{
+					width:350px;
+					border-radius:20px;
+					background-color:black;
+					color:Tan;
+					border:none;
+					font-size:20px;
+					border-bottom: 5px solid DodgerBlue;
+					font-family:"Arial",sans-serif;
+					padding-left:20px;
+					margin-left:10px;
+				}
+input[type=text]:focus 
+{
+	outline:none;
+	width:450px;
+  transition:width 0.5s;
+}
+input[type=password]:focus 
+{
+	outline:none;
+	width:450px;
+  transition:width 0.5s;
+}
+textarea:focus 
+{
+	outline:none;
+	width:450px;
+  transition:width 0.5s;
+}
+</style>
+</head>
+<body style="background-image: url('TregBg.jpg') ">
+<img src="logoWithoutBg.png" style="width:300px; margin-left:550px; height:300px;"/>
+<form name="main" onsubmit="return validate_info();"   autocomplete="off" method="post" action="">
+<div style="  background-image: url('TregBg.jpg') color:Black; border-radius:15px 50px;  width:600px;";>
+<!--<fieldset style="border-radius:15px 50px;">
+<legend style="text-align:center; font-size:25px;">NEW_REGISTERATION</legend>-->
+<p style="font-family:Impact,Charcoal,sans-serif; font-weight:bold; font-size:60px;">Student Registration</p>
+<table>
+<tr>
+	<td style="color:black">Name</br><span style="color:red; font-size:12px; "  id="sp1"></span></td></tr>
+<tr>
+	<td style="padding-left:10px;"><input  placeholder="First Name" type="text" name="regtxt1" id="regtxt1"required /></td>
+	
+</tr>
+<tr>
+<td></br></td></tr>
+<tr>
+	<td style="color:black">Last Name</br><span style="color:red; font-size:12px;"  id="sp2"></td>
+	</tr>
+	<tr>
+	<td style="padding-left:10px;"><input placeholder="Last Name" autocomplete="off" type="text" name="regtxt2" id="regtxt2" required /></td>
+</tr>
+<tr><td></br></td></tr>
+<tr>
+<td style="color:black">Parent's Mobile Number</br><span style="color:red; font-size:12px;"  id="sp3"></td>
+</tr>
+<tr>
+	<td style="padding-left:10px;"><input autocomplete="off" placeholder="Mobile" type="text" name="regtxt3" /></td>
+</tr>
+<tr><td></br></td></tr>
+<tr>
+<td style="color:black">Whatsapp Mobile Number</br><span style="color:red; font-size:12px;"  id="sp3"></td>
+</tr>
+<tr>
+	<td style="padding-left:10px;"><input autocomplete="off" placeholder="Optional" type="text" name="regtxt3" /></td>
+</tr>
+<tr><td></br></td></tr>
+<tr>
+<td style="color:black">Sex</td></tr>
+<tr>
+	<td style="padding-left:10px; color:black"><input type="radio"  name="rgrd1" value="male" required />Male
+	<input type="radio"   name="rgrd1" value="female"/>Female</td>
+</tr>
+<tr>
+<td></br></td></tr>
+<tr>
+<td style="color:black">Email-id</td></tr>
+<tr>
+	<td style="padding-left:10px;"><input autocomplete="off" type="text" placeholder="Optional" name="regtxt4" id="regtxt4" required /></td>
+</tr>
+<tr>
+<td></br></td></tr>
+<tr>
+<td style="color:black">Full Address</td>
+</tr>
+<tr>
+	<td style="padding-left:10px;"><textarea placeholder="Full Address" autocomplete="off" rows="5" cols="30" name="regtxt8" id="regtxt8" required ></textarea></td>
+</tr>
+<tr>
+<td></br></td></tr>
+<tr>
+<td></br></td></tr>
+<tr>
+<td>
+<input type="submit" value="Sign Up" style="width:200px; font-weight:bolder; margin-left:150px; font-family:'Arial',sans-serif; border:none; background-color:#192537; padding:10px 10px 10px 10px; cursor:pointer; border-radius:20px; color:Tan;" />
+</td>
+</tr>
+</table>
+</div>
+</form>
+<script type="text/javascript" language="javascript">
+function validate_info()
+{
+		var name=document.main.regtxt1.value;
+		var Lname=document.main.regtxt2.value;
+		var Mno=document.main.regtxt3.value;
+		var email=document.main.regtxt4.value;
+		var Uid=document.main.regtxt5.value;
+		var pss=document.main.regtxt6.value;
+		var Cpss=document.main.regtxt7.value;
+		if(!isNaN(name))//if name contains numbers
+		{
+				document.getElementById('sp1').innerHTML="**Name can only contains alphabets.";
+				return false;
+		}
+		if(name.length<3)//if length of name is less than 3.
+		{
+				document.getElementById('sp1').innerHTML="**Name should have atleast 5 alphabets.";
+				return false;
+		}
+		if(!isNaN(Lname))//if name contains numbers
+		{
+				document.getElementById('sp2').innerHTML="**Last Name can only contains alphabets.";
+				return false;
+		}
+		if(Lname.length <3)//if length of name is less than 3.
+		{
+				document.getElementById('sp2').innerHTML="**Last Name should have atleast 3 alphabets.";
+				return false;
+		}
+		if(isNaN(Mno))//if mobile no has alphabets.
+		{
+				document.getElementById('sp3').innerHTML="**Mobile number can only contains digits.";
+				return false;
+		}
+		if(Mno.length !=10)//if mobile no. length is not 10.
+		{
+				document.getElementById('sp3').innerHTML="**Mobile number should be of 10 digits.";
+				return false;
+		}
+		if(Uid.length<5)//if user id length is not 10.
+		{
+				document.getElementById('sp4').innerHTML="**User Id should have atleast 5 characters.";
+				return false;
+		}
+		if(pss != Cpss)//password and conf. password do not match.
+		{
+				document.getElementById('sp5').innerHTML="**Password and confirm Password do not match.";
+				return false;
+		}
+		return true;
+}
+</script>
+</body>
+</html>
